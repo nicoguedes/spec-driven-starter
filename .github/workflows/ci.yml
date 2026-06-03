@@ -1,0 +1,84 @@
+# CI gates — nothing reaches `main` without these passing.
+#
+# This is a generic, multi-language-friendly skeleton. Replace the commented
+# placeholder steps with your stack's real commands (uncomment the runtime
+# setup you need). The job names and the lint / typecheck / test split are the
+# contract; the commands inside are yours to fill in.
+#
+# See: CONSTITUTION.md ("Prime directives", "Definition of Done").
+
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Cancel superseded runs on the same ref to save CI minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Set up your runtime(s). Uncomment what you use. ---
+      # - uses: actions/setup-node@v4
+      #   with: { node-version: "lts/*", cache: "npm" }
+      # - uses: actions/setup-python@v5
+      #   with: { python-version: "3.x", cache: "pip" }
+      # - uses: actions/setup-go@v5
+      #   with: { go-version: "stable" }
+
+      # --- Install dependencies (replace with your package manager). ---
+      # run: npm ci
+      # run: pip install -r requirements.txt
+      # run: go mod download
+
+      - name: Lint
+        run: |
+          echo "TODO: replace with your linter, e.g.:"
+          echo "  npm run lint   |   ruff check .   |   golangci-lint run"
+          # Fail this step until wired up so the placeholder can't be mistaken for green.
+          exit 1
+
+  typecheck:
+    name: typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Set up your runtime(s) as above. ---
+
+      - name: Typecheck
+        run: |
+          echo "TODO: replace with your type checker, e.g.:"
+          echo "  npm run typecheck   |   tsc --noEmit   |   mypy .   |   go vet ./..."
+          exit 1
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    # Integration tests may need real services (DB, queue, cache). Spin them up
+    # here as `services:` or via a containerized fixtures library such as
+    # testcontainers. See CONSTITUTION.md ("Testing pyramid").
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Set up your runtime(s) as above. ---
+      # --- Install dependencies as above. ---
+
+      - name: Run tests (unit + integration + e2e)
+        run: |
+          echo "TODO: replace with your test command, e.g.:"
+          echo "  npm test   |   pytest   |   go test ./..."
+          echo "Keep E2E (e.g. Playwright) deterministic; run them here or in a dedicated job."
+          exit 1
+
+      # Optional: upload coverage / test reports as artifacts.
+      # - uses: actions/upload-artifact@v4
+      #   with: { name: test-report, path: <path> }

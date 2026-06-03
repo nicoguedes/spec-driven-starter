@@ -1,0 +1,55 @@
+# This is a stack-agnostic template. Keep entries generic; add your stack's
+# own ignores when you adopt it.
+
+# Secrets & env — NEVER commit these (see CONSTITUTION.md). Use a secret manager.
+.env
+.env.*
+*.local
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Dependencies
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Build output
+dist/
+build/
+out/
+target/
+*.egg-info/
+
+# Test & coverage artifacts
+coverage/
+.coverage
+.nyc_output/
+.pytest_cache/
+playwright-report/
+test-results/
+
+# Caches & tooling
+.cache/
+.mypy_cache/
+.ruff_cache/
+.gradle/
+
+# Git worktrees created by the workflow (kept outside the repo by convention,
+# but ignore stray ones just in case)
+wt-*/
+
+# Editor / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
