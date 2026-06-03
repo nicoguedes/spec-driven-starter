@@ -109,6 +109,8 @@ Mentioning the agent on an Issue (e.g. a comment like `@agent implement this`) t
 │       ├── prd-template.md
 │       ├── task-template.md
 │       └── test-plan-template.md
+├── .claude/
+│   └── skills/                            bundled lifecycle skills (specify · plan-waves · implement-feature · review-pr)
 └── .github/
     ├── workflows/
     │   ├── ci.yml                         lint · typecheck · test gates
@@ -117,6 +119,8 @@ Mentioning the agent on an Issue (e.g. a comment like `@agent implement this`) t
         ├── prd.md
         └── task.md
 ```
+
+The bundled `.claude/skills/` are copies from the canonical [`claude-code-skills`](https://github.com/nicoguedes/claude-code-skills) collection — pull updates from there.
 
 ---
 
